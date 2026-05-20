@@ -8,11 +8,13 @@
 
 ### 说明
 
-&emsp;&emsp;封装了一下ComfyUI_UltimateSDUpscale，许多参数都被我调整了一下。观察到放大后的图像会有色偏，有时候是有益的有时候是有害的。我想了想还是在最后加入了在LAB颜色空间进行的颜色匹配处理。
+&emsp;&emsp;封装了一下ComfyUI_UltimateSDUpscale。我观察到放大后的图像会有色偏，有时候是有益的有时候是有害的。我想了想还是在最后加入了在LAB颜色空间进行的颜色匹配处理。
 
 ### 要求
 
-- 需要安装ComfyUI_UltimateSDUpscale和ComfyUI_essentials
+- ComfyUI_UltimateSDUpscale
+
+- ComfyUI_essentials
 
 - 确保至少8G显存可用
 
@@ -24,9 +26,7 @@
 
 - 采样器和调度器需要根据实际情况调整
 
-- 其余参数已经过多次调试，如步数、降噪、区块填充尺寸等
-
-&emsp;&emsp;经过一些测试，我观察到放大后的图像会有色偏，有时候有益有时候有害。我想了想还是在最后加入了在LAB颜色空间进行的颜色匹配处理。
+- 其余参数已经过多次调试被设置到了合适的值，如步数、降噪、区块填充尺寸等等
 
 ## 人体结构保持
 
@@ -36,11 +36,15 @@
 
 &emsp;&emsp;专门用于半写实风格到写实风格的迁移的一个子节点，效果还不错。分两阶段控制，前一部分由HED控制，后一部分由LineArt控制。别的边缘控制模式我试过了，感觉面部都缺少美感。这里默认的0.6分界比例是我测试出来的一个黄金比例。以下是两张样例图像。
 
-![](images/ComfyUI_06250_.png)![](images/ComfyUI_06334_.png)
+![](images/ComfyUI_06250_.png) ![](images/ComfyUI_06334_.png)
 
 ### 要求
 
-- 需要安装ComfyUI_essentials、comfyui_controlnet_aux、ComfyUI-MagickWand
+- ComfyUI_essentials
+
+- comfyui_controlnet_aux
+
+- ComfyUI-MagickWand
 
 - ControlNet-Union最好使用xinsir团队的ControlNet-Union
 
@@ -48,7 +52,7 @@
 
 &emsp;&emsp;如果半写实参考图中有不太喜欢的内容，可以在Image Canvas中进行编辑，把不需要的内容手动去除。上方的两张示例图的面部使用了相关的技巧。
 
-&emsp;&emsp;HED预处理图像和LineArt预处理图像有时候会少一点东西，前两张图的左手就没对应上。可以在子节点左边的"差分图像"节点中，利用Mask Editor，使用它自带的吸管和橡皮擦工具选择想添加的缺失结构来创建遮罩，并使用合成图像（遮罩）节点来添加缺失结构。以下是采取上述措施的两个示例图。
+&emsp;&emsp;HED预处理图像和LineArt预处理图像有时候会少一点东西，前两张图中的左手就没对应上。可以在子节点左边的"差分图像"节点中，利用Mask Editor，使用它自带的吸管和橡皮擦工具选择想添加的缺失结构来创建遮罩，并使用合成图像（遮罩）节点来添加缺失结构。以下是采取上述措施的两个示例图。
 
 ![](images/ComfyUI_06334_.png)
 
