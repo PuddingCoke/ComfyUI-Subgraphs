@@ -34,8 +34,6 @@
 
 ![](images/ComfyUI_06250_.png)![](images/ComfyUI_06334_.png)
 
-不知道为什么，HED预处理图像和LineArt预处理图像有时候会少一点东西。正如上两张图所示，左手就没对应上，我还在想该如何修改这个子节点。
-
 ### 要求
 
 - ControlNet-Union最好使用xinsir团队的ControlNet-Union
@@ -43,3 +41,9 @@
 ### 使用技巧
 
 &emsp;&emsp;如果半写实参考图中有不太喜欢的内容，可以把HED预处理图像和LineArt预处理图像保存下来，把这两张图像中不需要的内容手动去除，然后用手动编辑后的预处理图控制生成图。上方的两张示例图的脸部就使用了相关的技巧。
+&emsp;&emsp;HED预处理图像和LineArt预处理图像有时候会少一点东西。正如上两张图所示，左手就没对应上。可以使用CLAHE预处理参考图像，接着使用HED预处理图像，然后使用MASK遮罩选择想添加的结构，最后使用合成图像（遮罩）节点，将想添加的结构加入无CLAHE预处理HED预处理的图像中。下面两张图分别展示了相关的操作以及示例演示图像。可以看到做差后的图中只是多出来了手。
+
+![](images/styletransfer_maskexample.png)
+
+![](images/ComfyUI_06359_.png)
+
